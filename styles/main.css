@@ -1,0 +1,191 @@
+:root {
+  --primary-color: #fffffc;
+  --secondary-color: #b9b5ff;
+
+  --startbtn-color: #adf7b6;
+  --stopbtn-color: #f6837b;
+  --resetbtn-color: #c1d3fe;
+
+  --h1-font: "Poppins", sans-serif;
+  --time-font: "Orbitron", sans-serif;
+  --body-font: "Nunito", sans-serif;
+
+  --h1-fs: 3.5rem;
+  --time-fs: 2rem;
+  --button-fs: 1.5rem;
+}
+a {
+  text-decoration: none;
+}
+
+/* Aligns entire html body */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  font-family: var(--body-font);
+}
+
+/* Aligns the entire container in the body */
+main {
+  background: rgba(185, 181, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  gap: 80px;
+  padding: 10px 20px;
+}
+
+h1 {
+  font-size: var(--h1-fs);
+  font-family: var(--h1-font);
+  font-weight: 400;
+}
+
+/* selects  the container that displays timer and timer controls.
+Aligns it vertically and horizontally within the main container
+includes border radius for slightly rounded edges
+Includes box shadow to slightly move container upwards
+includes linear gradient to display dual coloring
+ */
+#stopwatch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(
+    40deg,
+    rgba(179, 168, 243, 0.9),
+    rgba(255, 253, 252, 0.8)
+  );
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--primary-color);
+  padding: 20px;
+
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Sets timer font and font family */
+.time {
+  font-size: var(--time-fs);
+  font-family: var(--time-font);
+}
+
+/* displays timer controls side by side on large screens */
+#controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+/* Sets  general styles for individual control buttons
+transition ensure smooth and sleek flow of hover effects */
+#controls button {
+  font-size: var(--button-fs);
+  padding: 4px 10px;
+  margin: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+/* Added background color and hover effects to individual control buttons.
+On hover, the background color changes into a deeper color and the button lifts up 
+slightly with the use of "translateY(-3px)"*/
+#startBtn {
+  background: var(--startbtn-color);
+}
+#startBtn:hover {
+  background: #84f391;
+  transform: translateY(-3px);
+}
+#stopBtn {
+  background: var(--stopbtn-color);
+}
+#stopBtn:hover {
+  background: #e9675e;
+  transform: translateY(-3px);
+}
+#resetBtn {
+  background: var(--resetbtn-color);
+}
+#resetBtn:hover {
+  background: #b1c7fa;
+  transform: translateY(-3px);
+}
+
+/* Aligns the footer and all it's contents both horizontally and vertically,
+includes margin to seperate it from stopmatch container, 
+includes font size and  adds gap to separate individual footer contents*/
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  gap: 4px;
+}
+
+/* aligns socials container horizontally */
+.socials {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* aligns socials links,
+includes border raduis to give circular shape, 
+includes width and height to maintain size,
+includes background color and transitions to ensure smooth effects flow.
+Without the use of "transition", effects would simply snap in and out. */
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Selects socials link icon and adds size and color */
+.socials a i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/*Adds hover effect on socials links
+This piece of code slightly moves link up and adds shadow */
+.socials a:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* media query for large screen */
+@media screen and (min-width: 500px) {
+  #controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  body {
+    margin-top: 60px;
+  }
+  h1{
+    font-size: 4rem;
+  }
+}
