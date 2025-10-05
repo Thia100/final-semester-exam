@@ -2,7 +2,7 @@
 const appendHours = document.querySelector("#hours");
 const appendMinutes = document.querySelector("#minutes");
 const appendSeconds = document.querySelector("#seconds");
-const appendMiliseconds = document.querySelector("#miliseconds");
+const appendMiliseconds = document.querySelector("#milliseconds");
 
 // Gets ids to start, stop and reset timer from dom
 const startBtn = document.querySelector("#startBtn");
@@ -42,6 +42,14 @@ startBtn.addEventListener("click", () => {
     startTime = Date.now() - elapsedTime;
     timer = setInterval(update, 100);
     isRunning = true;
+
+    // update button states
+    // once start buton is clicked, it becomes greyed out and it can't be
+    // clicked again therefore preventing multiple start
+    // clicks when stopwatch is
+    // already running
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
   }
 });
 
@@ -50,6 +58,9 @@ stopBtn.addEventListener("click", () => {
     clearInterval(timer);
     elapsedTime = Date.now() - startTime;
     isRunning = false;
+
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
   }
 });
 
@@ -71,6 +82,4 @@ const lastModified = document.lastModified;
 
 // Sets the current year and copyright symbol as well as last modified date and time
 document.querySelector("#currentYear").textContent = `© ${currentYear}`;
-document.querySelector(
-  "#lastModified"
-).textContent = ` Last Modified: ${lastModified}`;
+document.querySelector("#lastModified").textContent = ` Last Modified: ${lastModified}`;
